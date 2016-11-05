@@ -45,7 +45,7 @@ Authentication complete: for both users and admins.
 
 Complete crud operations for sermons.
 
-Vuejs powered ui. 
+Vuejs powered ui. (ajax pagination, editing, etc)
 
 ## Where the project could go:
 
@@ -61,9 +61,12 @@ Add the download page.
 
 
 #Credits
+I used the tools/projects below in development.
 Director admin template: https://www.bootstrapzero.com/bootstrap-template/director-responsive-admin
 Vuejs: https://vuejs.org/
 Laravel: https://laravel.com/
+Bootstrap
+Jquery
 
 ## License
  [MIT license](http://opensource.org/licenses/MIT).
