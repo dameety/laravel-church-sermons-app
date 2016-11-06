@@ -147,10 +147,7 @@
 	        </div>
 	      </div>
 	    </header>
-
-	    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-		  Tooltip on top
-		</button>	    
+	    
 	    <br>
 		<div class="panel-body table-responsive"> 
 			<div class="row m-b-10">
@@ -287,27 +284,11 @@
             },
 
 
-			/*swal({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
-			}).then(function() {
-			  swal(
-			    'Deleted!',
-			    'Your file has been deleted.',
-			    'success'
-			  );
-			})*/
-
             deleteSermon: function(sermon) {
             	var vm = this;
             	swal({
                     title: 'Are you sure?',
-                    text: 'This will delete the sermon',
+                    text: 'This sermon will be deleted if you continue',
                     type: 'warning',
                     showCancelButton: true
                 }).then(function(){
@@ -316,21 +297,8 @@
 							this.getSermonsCount()
 							this.sermons.$remove(sermon);
 						});
-					});			
+					}).done();	
 			},
-
-
-
-            /*deleteSermon: function(sermon) {
-				var  ConfirmBox = confirm('Are you sure you want to delete this sermon?')
-				if (ConfirmBox) {
-					this.$http.delete('/api/sermon/delete/' + sermon.slug)
-						.then(function () {
-							this.getSermonsCount()
-							this.sermons.$remove(sermon)
-					});
-				}
-			},*/
 
 
 

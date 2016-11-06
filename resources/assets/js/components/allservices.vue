@@ -133,6 +133,9 @@
 
 
 <script>
+
+    const swal = require('sweetalert2');
+
   	export default {
 
     		data: function() {
@@ -212,16 +215,25 @@
                 });
           },
 
-    			deleteService: function(service) {
-    				var  ConfirmBox = confirm('Are you sure you want to delete this service?')
-    				if (ConfirmBox) {
-    					this.$http.delete('/api/service/delete/' + service.slug)
-    						.then(function () {                    
-                    this.getServicesCount()                
-    						    this.services.$remove(service)
-    					});
-    				}
-    			},
+
+          deleteService: function(service) {
+              var vm = this;
+              swal({
+                    title: 'Are you sure?',
+                    text: 'This service will be deleted if you continue',
+                    type: 'warning',
+                    showCancelButton: true
+                }).then(function(){
+                  vm.$http.delete('/api/service/delete/' + service.slug)
+                      .then(function () {
+                        this.getServicesCount()
+                        this.services.$remove(service);
+                      });
+                  }).done();  
+          },
+
+
+
 
     		} /*methods end here*/
 

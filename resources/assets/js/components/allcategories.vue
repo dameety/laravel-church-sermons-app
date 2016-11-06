@@ -137,6 +137,9 @@
 
 
 <script>
+
+    const swal = require('sweetalert2');
+
   	export default {
 
     		data: function() {
@@ -216,19 +219,25 @@
                 });
           },
 
-    			deleteCategory: function(category) {
-    				var  ConfirmBox = confirm('Are you sure you want to delete this category?')
-    				if (ConfirmBox) {
-    					this.$http.delete('/api/category/delete/' + category.name)
-    						.then(function () {                    
-                    this.getCategoriesCount()                
-    						    this.categories.$remove(category)
-    					});
-    				}
-    			},
+
+          deleteCategory: function(category) {
+              var vm = this;
+              swal({
+                    title: 'Are you sure?',
+                    text: 'This category will be deleted if you continue',
+                    type: 'warning',
+                    showCancelButton: true
+                }).then(function(){
+                  vm.$http.delete('/api/category/delete/' + category.name)
+                      .then(function () {
+                        this.getCategoriesCount()
+                        this.categories.$remove(category)
+                      });
+                  }).done();     
+          },
 
     			
-    		} /*methods end here*/
+   		} /*methods end here*/
 
 
   	}; /*compoent ends here */

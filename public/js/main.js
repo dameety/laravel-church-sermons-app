@@ -13691,6 +13691,10 @@ if (module.hot) {(function () {  module.hot.accept()
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+
+var swal = require('sweetalert2');
+
 exports.default = {
 
   data: function data() {
@@ -13769,13 +13773,18 @@ exports.default = {
     },
 
     deleteCategory: function deleteCategory(category) {
-      var ConfirmBox = confirm('Are you sure you want to delete this category?');
-      if (ConfirmBox) {
-        this.$http.delete('/api/category/delete/' + category.name).then(function () {
+      var vm = this;
+      swal({
+        title: 'Are you sure?',
+        text: 'This category will be deleted if you continue',
+        type: 'warning',
+        showCancelButton: true
+      }).then(function () {
+        vm.$http.delete('/api/category/delete/' + category.name).then(function () {
           this.getCategoriesCount();
           this.categories.$remove(category);
         });
-      }
+      }).done();
     }
 
   } /*methods end here*/
@@ -13793,7 +13802,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-f773e6ac", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3}],8:[function(require,module,exports){
+},{"sweetalert2":2,"vue":5,"vue-hot-reload-api":3}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13955,22 +13964,6 @@ exports.default = {
             this.$set('pagination', pagination);
         },
 
-        /*swal({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then(function() {
-          swal(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          );
-        })*/
-
         deleteSermon: function deleteSermon(sermon) {
             var vm = this;
             swal({
@@ -13983,19 +13976,8 @@ exports.default = {
                     this.getSermonsCount();
                     this.sermons.$remove(sermon);
                 });
-            });
+            }).done();
         },
-
-        /*deleteSermon: function(sermon) {
-        var  ConfirmBox = confirm('Are you sure you want to delete this sermon?')
-        if (ConfirmBox) {
-        this.$http.delete('/api/sermon/delete/' + sermon.slug)
-        .then(function () {
-        this.getSermonsCount()
-        this.sermons.$remove(sermon)
-        });
-        }
-        },*/
 
         detailsSermon: function detailsSermon(sermon) {
             this.$set('oneSermon', sermon);
@@ -14053,7 +14035,7 @@ exports.default = {
 
 }; /*compoent ends here */
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<!-- the details modal -->\n<div class=\"modal fade oneSermonModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n    \t<div class=\"modal-header modalHeading\">\n            <button type=\"button\" class=\"close modalHeading\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n            <h2 class=\"modal-title\">Sermon Details</h2>\n        </div>        \n        <div class=\"modal-body\">\n\t\t\t<div class=\"row modalRowTop\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Title:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.title }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Preacher:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.preacher }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowUncolored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Service:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermonService.name }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Category:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{oneSermonCategory.name}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowUncolored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Date Preached:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.datepreached }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Size:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.size }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowBottom\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Status:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.status }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div> \n        <div class=\"modal-footer modalHeading\">\n            <button class=\"btn btn-default\" type=\"button\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"editSermon(oneSermon.slug)\">Edit</button>\n            <button data-dismiss=\"modal\" class=\"btn btn-danger\" type=\"button\">Close</button>            \n        </div>\n    </div>\n  </div>\n</div>\n<!--  the details modal  -->\n\n\n<!-- the edit modal -->\n<div class=\"modal fade editModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">    \t\n        <div class=\"modal-body\">\n\t\t\t<form method=\"post\" @submit.prevent=\"saveUpdateSermon(updateSermon.slug)\">\n\t            <div class=\"form-group\">\n            \t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n            \t\t<br>\n\t                <label>Title: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.title\" required=\"required\" name=\"title\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['title']\" class=\"inputError\">{{ formErrors['title'] }}</span>                        \n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Preacher: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.preacher\" required=\"required\" name=\"preacher\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['preacher']\" class=\"inputError\">{{ formErrors['preacher'] }}</span>                        \n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Service: </label>                        \n\t                <select v-model=\"updateSermon.service_id\" required=\"required\" name=\"service_id\" class=\"form-control input-sm\">\n\t\t\t            <option v-for=\"service in services\" v-bind:value=\"service.id\">\n\t\t\t            \t{{ service.name }}\n\t\t\t            </option>\n\t                \t{{ formErrors['category_id'] }}  \n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Category: </label>                        \n\t                <select v-model=\"updateSermon.category_id\" required=\"required\" name=\"category_id\" class=\"form-control input-sm\">\n\t\t\t            <option v-for=\"category in categories\" v-bind:value=\"category.id\">\n\t\t\t            \t{{ category.name }}\n\t\t\t            </option>\n\t                \t{{ formErrors['category_id'] }}  \n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Date: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.datepreached\" required=\"required\" name=\"datepreached\" data-provide=\"datepicker\" data-date-autoclose=\"true\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['datepreached']\" class=\"inputError\">{{ formErrors['datepreached'] }}</span>\n\t            </div>\n\t\t\t\t<div class=\"form-group\">\n\t                <label>Status: </label>                        \n\t                <select v-model=\"updateSermon.status\" name=\"status\" class=\"form-control input-sm\">\n\t\t\t            <option updatesermon.status=\"\">Free</option>\n\t\t\t            <option>Premium</option>\t                \t\n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">                    \n                    <button type=\"submit\" class=\"btn btn-info btn-block btn-lg\">Save Changes</button>\n                </div>\n            </form>\t            \n\t\t</div>\n    </div>\n  </div>\n</div>\n\n<!--  the edit modal  -->\n\n\n\t<div class=\"panel\">\n\t    <header class=\"panel-heading\">\n\t      <div class=\"row\">\n\t        <div class=\"col-sm-3\">\n\t           <span class=\"badge badge-info count\">Total : {{sermonsCount.length}} </span>\n\t        </div>\n\t        <div class=\"col-sm-3 pull-right\">\n\t          <button class=\"btn btn-sm btn-primary btn-block\" type=\"button\">Add New</button>\n\t        </div>\n\t      </div>\n\t    </header>\n\n\t    <button type=\"button\" class=\"btn btn-secondary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Tooltip on top\">\n\t\t  Tooltip on top\n\t\t</button>\t    \n\t    <br>\n\t\t<div class=\"panel-body table-responsive\"> \n\t\t\t<div class=\"row m-b-10\">\n\t\t      <div class=\"col-md-3\">\n\t\t        <select class=\"form-control input-sm\" v-model=\"categorySelected\" @change=\"getCategorySermons(categorySelected)\">\n\t\t            <option v-for=\"category in categories\">\n\t\t            \t{{ category.name }}\n\t\t            </option>\n\t\t        </select>\n\t\t      </div>\n              <div class=\"col-md-6\">\n                    <input type=\"text\" v-model=\"searchWord\" class=\"form-control input-sm\" placeholder=\"start searching here\">\n              </div>\n\t\t      <div class=\"col-md-3 pull-right\">\n\t\t        <div class=\"pagination pull-right\">\n\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.prev_page_url)\" :disabled=\"!pagination.prev_page_url\">\n\t\t\t\t        Previous\n\t\t\t\t    </button> &nbsp; \n\t\t\t\t    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; \n\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.next_page_url)\" :disabled=\"!pagination.next_page_url\">Next\n\t\t\t\t    </button>\n\t\t\t\t</div>\n\t\t      </div>\n\t\t    </div>\n\t\t    <table class=\"table table-hover\">\n\t\t    \t<tbody><tr>\n\t\t            <th>Preacher</th>\n\t\t            <th>Date</th>\n\t\t            <th>Title</th>\n\t\t            <th>&nbsp;</th>\n\t\t        </tr>\t\t        \n\t\t       \t<tr v-for=\"sermon in sermons | filterBy searchWord\">\n\t\t            <td> {{ sermon.preacher }} </td>\n\t\t            <td> {{ sermon.datepreached }} </td>\n\t\t            <td> {{ sermon.title }} </td>\n\t\t            <td>\n\t\t            \t<div class=\"pull-right\">\n\t\t              \t\t<button class=\"btn btn-default\" type=\"button\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"editSermon(sermon.slug)\">Edit</button>\n\t\t              \t\t<button type=\"button\" class=\"btn btn-sm btn-info\" data-toggle=\"modal\" data-target=\".oneSermonModal\" @click.prevent=\"detailsSermon(sermon)\">Details</button>\n\t\t              \t\t<button type=\"button\" class=\"btn btn-sm btn-danger\" @click.prevent=\"deleteSermon(sermon)\">Delete</button>\n\t\t              \t</div>\n\t\t            </td>\n\t\t        </tr>\n\t\t    </tbody></table> <br>\n\t    </div> <!-- from categroy filter to table ends here -->\n\t    <header class=\"panel-heading\">\n\t      \t<div class=\"row\">\n\t\t        <div class=\"col-sm-3\">\t\t           \n\t\t        </div>\n\t\t        <div class=\"col-sm-3 pull-right\">\n\t\t        \t<div class=\"pagination pull-right\">\n\t\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.prev_page_url)\" :disabled=\"!pagination.prev_page_url\">\n\t\t\t\t\t        Previous\n\t\t\t\t\t    </button> &nbsp; \n\t\t\t\t\t    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; \n\t\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.next_page_url)\" :disabled=\"!pagination.next_page_url\">Next\n\t\t\t\t\t    </button>\n\t\t\t\t\t</div>\n\t\t        </div>\n\t    \t</div>\n\t    </header>\n\t</div>\n\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<!-- the details modal -->\n<div class=\"modal fade oneSermonModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n    \t<div class=\"modal-header modalHeading\">\n            <button type=\"button\" class=\"close modalHeading\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n            <h2 class=\"modal-title\">Sermon Details</h2>\n        </div>        \n        <div class=\"modal-body\">\n\t\t\t<div class=\"row modalRowTop\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Title:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.title }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Preacher:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.preacher }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowUncolored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Service:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermonService.name }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Category:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{oneSermonCategory.name}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowUncolored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Date Preached:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.datepreached }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowColored\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Size:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.size }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row modalRowBottom\">\n\t\t\t\t<div class=\"col-md-3\">\n\t\t\t\t\t<strong class=\"pull-right\">Status:</strong>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-9\">\n\t\t\t\t\t{{ oneSermon.status }}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div> \n        <div class=\"modal-footer modalHeading\">\n            <button class=\"btn btn-default\" type=\"button\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"editSermon(oneSermon.slug)\">Edit</button>\n            <button data-dismiss=\"modal\" class=\"btn btn-danger\" type=\"button\">Close</button>            \n        </div>\n    </div>\n  </div>\n</div>\n<!--  the details modal  -->\n\n\n<!-- the edit modal -->\n<div class=\"modal fade editModal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">    \t\n        <div class=\"modal-body\">\n\t\t\t<form method=\"post\" @submit.prevent=\"saveUpdateSermon(updateSermon.slug)\">\n\t            <div class=\"form-group\">\n            \t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n            \t\t<br>\n\t                <label>Title: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.title\" required=\"required\" name=\"title\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['title']\" class=\"inputError\">{{ formErrors['title'] }}</span>                        \n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Preacher: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.preacher\" required=\"required\" name=\"preacher\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['preacher']\" class=\"inputError\">{{ formErrors['preacher'] }}</span>                        \n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Service: </label>                        \n\t                <select v-model=\"updateSermon.service_id\" required=\"required\" name=\"service_id\" class=\"form-control input-sm\">\n\t\t\t            <option v-for=\"service in services\" v-bind:value=\"service.id\">\n\t\t\t            \t{{ service.name }}\n\t\t\t            </option>\n\t                \t{{ formErrors['category_id'] }}  \n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Category: </label>                        \n\t                <select v-model=\"updateSermon.category_id\" required=\"required\" name=\"category_id\" class=\"form-control input-sm\">\n\t\t\t            <option v-for=\"category in categories\" v-bind:value=\"category.id\">\n\t\t\t            \t{{ category.name }}\n\t\t\t            </option>\n\t                \t{{ formErrors['category_id'] }}  \n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">\n\t                <label>Date: </label>                        \n\t                <input type=\"text\" v-model=\"updateSermon.datepreached\" required=\"required\" name=\"datepreached\" data-provide=\"datepicker\" data-date-autoclose=\"true\" class=\"form-control input-sm\">\n\t                <span v-if=\"formErrors['datepreached']\" class=\"inputError\">{{ formErrors['datepreached'] }}</span>\n\t            </div>\n\t\t\t\t<div class=\"form-group\">\n\t                <label>Status: </label>                        \n\t                <select v-model=\"updateSermon.status\" name=\"status\" class=\"form-control input-sm\">\n\t\t\t            <option updatesermon.status=\"\">Free</option>\n\t\t\t            <option>Premium</option>\t                \t\n\t\t        \t</select>\n\t            </div>\n\t            <div class=\"form-group\">                    \n                    <button type=\"submit\" class=\"btn btn-info btn-block btn-lg\">Save Changes</button>\n                </div>\n            </form>\t            \n\t\t</div>\n    </div>\n  </div>\n</div>\n\n<!--  the edit modal  -->\n\n\n\t<div class=\"panel\">\n\t    <header class=\"panel-heading\">\n\t      <div class=\"row\">\n\t        <div class=\"col-sm-3\">\n\t           <span class=\"badge badge-info count\">Total : {{sermonsCount.length}} </span>\n\t        </div>\n\t        <div class=\"col-sm-3 pull-right\">\n\t          <button class=\"btn btn-sm btn-primary btn-block\" type=\"button\">Add New</button>\n\t        </div>\n\t      </div>\n\t    </header>\n\t    \n\t    <br>\n\t\t<div class=\"panel-body table-responsive\"> \n\t\t\t<div class=\"row m-b-10\">\n\t\t      <div class=\"col-md-3\">\n\t\t        <select class=\"form-control input-sm\" v-model=\"categorySelected\" @change=\"getCategorySermons(categorySelected)\">\n\t\t            <option v-for=\"category in categories\">\n\t\t            \t{{ category.name }}\n\t\t            </option>\n\t\t        </select>\n\t\t      </div>\n              <div class=\"col-md-6\">\n                    <input type=\"text\" v-model=\"searchWord\" class=\"form-control input-sm\" placeholder=\"start searching here\">\n              </div>\n\t\t      <div class=\"col-md-3 pull-right\">\n\t\t        <div class=\"pagination pull-right\">\n\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.prev_page_url)\" :disabled=\"!pagination.prev_page_url\">\n\t\t\t\t        Previous\n\t\t\t\t    </button> &nbsp; \n\t\t\t\t    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; \n\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.next_page_url)\" :disabled=\"!pagination.next_page_url\">Next\n\t\t\t\t    </button>\n\t\t\t\t</div>\n\t\t      </div>\n\t\t    </div>\n\t\t    <table class=\"table table-hover\">\n\t\t    \t<tbody><tr>\n\t\t            <th>Preacher</th>\n\t\t            <th>Date</th>\n\t\t            <th>Title</th>\n\t\t            <th>&nbsp;</th>\n\t\t        </tr>\t\t        \n\t\t       \t<tr v-for=\"sermon in sermons | filterBy searchWord\">\n\t\t            <td> {{ sermon.preacher }} </td>\n\t\t            <td> {{ sermon.datepreached }} </td>\n\t\t            <td> {{ sermon.title }} </td>\n\t\t            <td>\n\t\t            \t<div class=\"pull-right\">\n\t\t              \t\t<button class=\"btn btn-default\" type=\"button\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"editSermon(sermon.slug)\">Edit</button>\n\t\t              \t\t<button type=\"button\" class=\"btn btn-sm btn-info\" data-toggle=\"modal\" data-target=\".oneSermonModal\" @click.prevent=\"detailsSermon(sermon)\">Details</button>\n\t\t              \t\t<button type=\"button\" class=\"btn btn-sm btn-danger\" @click.prevent=\"deleteSermon(sermon)\">Delete</button>\n\t\t              \t</div>\n\t\t            </td>\n\t\t        </tr>\n\t\t    </tbody></table> <br>\n\t    </div> <!-- from categroy filter to table ends here -->\n\t    <header class=\"panel-heading\">\n\t      \t<div class=\"row\">\n\t\t        <div class=\"col-sm-3\">\t\t           \n\t\t        </div>\n\t\t        <div class=\"col-sm-3 pull-right\">\n\t\t        \t<div class=\"pagination pull-right\">\n\t\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.prev_page_url)\" :disabled=\"!pagination.prev_page_url\">\n\t\t\t\t\t        Previous\n\t\t\t\t\t    </button> &nbsp; \n\t\t\t\t\t    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; \n\t\t\t\t\t    <button class=\"btn btn-default btn-sm\" @click=\"getAllSermons(pagination.next_page_url)\" :disabled=\"!pagination.next_page_url\">Next\n\t\t\t\t\t    </button>\n\t\t\t\t\t</div>\n\t\t        </div>\n\t    \t</div>\n\t    </header>\n\t</div>\n\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -14070,6 +14052,10 @@ if (module.hot) {(function () {  module.hot.accept()
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+
+var swal = require('sweetalert2');
+
 exports.default = {
 
   data: function data() {
@@ -14148,13 +14134,18 @@ exports.default = {
     },
 
     deleteService: function deleteService(service) {
-      var ConfirmBox = confirm('Are you sure you want to delete this service?');
-      if (ConfirmBox) {
-        this.$http.delete('/api/service/delete/' + service.slug).then(function () {
+      var vm = this;
+      swal({
+        title: 'Are you sure?',
+        text: 'This service will be deleted if you continue',
+        type: 'warning',
+        showCancelButton: true
+      }).then(function () {
+        vm.$http.delete('/api/service/delete/' + service.slug).then(function () {
           this.getServicesCount();
           this.services.$remove(service);
         });
-      }
+      }).done();
     }
 
   } /*methods end here*/
@@ -14172,7 +14163,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-10362928", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+},{"sweetalert2":2,"vue":5,"vue-hot-reload-api":3}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
