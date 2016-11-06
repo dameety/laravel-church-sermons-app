@@ -78,10 +78,8 @@
               <div class="col-md-3">
                 <select class="form-control input-sm">
                     <option>Filter</option>
-                    <option>Category</option>
-                    <option>Date</option>
-                    <option>Preacher</option>
-                    <option>Service</option>
+                    <option>Premium</option>
+                    <option>Free</option>
                 </select>
               </div>
               <div class="col-md-6">
@@ -150,6 +148,9 @@
 </template>
 
 <script>
+
+    const swal = require('sweetalert2');
+
 	export default {
 
 		data: function() {
@@ -209,16 +210,21 @@
 
             },
 
-			deleteUser: function(user) {
-				var  ConfirmBox = confirm('Are you sure you want to delete this User?')
-				if (ConfirmBox) {
-					this.$http.delete('/api/user/delete/' + user.slug)
-						.then(function () {
+            deleteUser: function(user) {
+                  var vm = this;
+                  swal({
+                        title: 'Are you sure?',
+                        text: 'This user will be deleted if you continue',
+                        type: 'warning',
+                        showCancelButton: true
+                    }).then(function(){
+                        vm.$http.delete('/api/user/delete/' + user.slug)
+                          .then(function () {
                             this.getUsersCount()
                             this.users.$remove(user)
-					});
-				}
-			},
+                          });
+                    }).done();  
+            },
        		
 
 		} /*methods end here*/

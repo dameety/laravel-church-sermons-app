@@ -143,7 +143,7 @@
 	           <span class="badge badge-info count">Total : {{sermonsCount.length}} </span>
 	        </div>
 	        <div class="col-sm-3 pull-right">
-	          <button class="btn btn-sm btn-primary btn-block" type="button">Add New</button>
+	          
 	        </div>
 	      </div>
 	    </header>

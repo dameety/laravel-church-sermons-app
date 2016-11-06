@@ -16,13 +16,7 @@
         <div class="panel-body table-responsive"> 
             <div class="row m-b-10">
               <div class="col-md-3">
-                <select class="form-control input-sm">
-                    <option>Filter</option>
-                    <option>Category</option>
-                    <option>Date</option>
-                    <option>Preacher</option>
-                    <option>Service</option>
-                </select>
+                
               </div>
               <div class="col-md-6">
                     <input type="text" v-model="searchWord" class="form-control input-sm" placeholder="start searching here">
@@ -90,6 +84,9 @@
 </template>
 
 <script>
+
+    const swal = require('sweetalert2');
+
 	export default {
 
 		data: function() {
@@ -143,16 +140,22 @@
                 this.$set('pagination', pagination)
             },
 
-			deleteAdmin: function(admin) {
-				var  ConfirmBox = confirm('Are you sure you want to delete this Admin?')
-				if (ConfirmBox) {
-					this.$http.delete('/api/admin/delete/' + admin.slug)
-						.then(function () {
+
+            deleteAdmin: function(admin) {
+                  var vm = this;
+                  swal({
+                        title: 'Are you sure?',
+                        text: 'This admin will be deleted if you continue',
+                        type: 'warning',
+                        showCancelButton: true
+                    }).then(function(){
+                        vm.$http.delete('/api/admin/delete/' + admin.slug)
+                          .then(function () {
                             this.getAdminsCount()
                             this.admins.$remove(admin)
-					});
-				}
-			},
+                          });
+                    }).done();  
+            },
 
 
 		} /*methods end here*/
