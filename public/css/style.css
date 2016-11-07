@@ -2,6 +2,11 @@
 @import url(//fonts.googleapis.com/css?family=Kaushan+Script);*/
 
 /*my edits*/
+.flex-direction-nav a:before {
+  font-size: 36px;
+}
+
+
 .pagination { /* this was added by me*/
   margin-top: 0px;
   margin-bottom: 3px;
