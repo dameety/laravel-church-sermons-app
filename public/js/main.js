@@ -14350,6 +14350,7 @@ exports.default = {
 
   data: function data() {
     return {
+      searchWord: "", /*used by the search bar*/
       sermons: [], /*using the getAllSermons()*/
       pagination: {}
     };
@@ -14384,7 +14385,7 @@ exports.default = {
 
 }; /*compoent ends here */
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"ui four stackable cards\">\n \t<div class=\"ui orange raised card\" v-for=\"sermon in sermons\">\n\t    <div class=\"content\">\n\t      <div class=\"header\">{{ sermon.title }}</div>\n\t      <div class=\"meta\">\n\t        <span class=\"category\"><i class=\"icon-user\"></i>{{ sermon.datepreached }}</span>\n\t        <span class=\"category\"><i class=\"icon-user\"></i>{{ sermon.preacher }}</span>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>Category of message</p>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>this is boatload of content waiting to be use. a paragraph ni jare</p>\n\t      </div>\n\t    </div>\n\t    <div id=\"actionButtons\" class=\"extra content actionButtons\">\n\t      <button class=\"fluid large ui orange button\">\n\t      <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n\t          Download\n\t      </button>\n\t    </div>\n  \t</div>\n </div>\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"row\">\n\t<div id=\"topSearch\" class=\"ui fluid huge icon input\">\n\t\t<input type=\"text\" placeholder=\"Start Your Search Here\">\n\t</div>\n</div>\n\n<div class=\"ui four stackable cards\">\n \t<div class=\"ui orange raised card\" v-for=\"sermon in sermons | filterBy searchWord\">\n\t    <div class=\"content\">\n\t      <div class=\"header\">{{ sermon.title }}</div>\n\t      <div class=\"meta\">\n\t        <span class=\"category\"><i class=\"icon-user\"></i>Date: {{ sermon.datepreached }}</span>\n\t        <br>\n\t        <span class=\"category\"><i class=\"icon-user\"></i>Preacher: {{ sermon.preacher }}</span>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>Category of message</p>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>this is boatload of content waiting to be use. a paragraph ni jare</p>\n\t      </div>\n\t    </div>\n\t    <div id=\"actionButtons\" class=\"extra content actionButtons\">\n\t      <button class=\"fluid large ui orange button\">\n\t      <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n\t          Download\n\t      </button>\n\t    </div>\n  \t</div>\n </div>\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

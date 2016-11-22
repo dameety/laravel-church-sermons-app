@@ -1,12 +1,19 @@
 <template>
 
+<div class="row">
+	<div id="topSearch" class="ui fluid huge icon input">
+		<input type="text" placeholder="Start Your Search Here">
+	</div>
+</div>
+
 <div class="ui four stackable cards">
- 	<div class="ui orange raised card"v-for="sermon in sermons">
+ 	<div class="ui orange raised card"v-for="sermon in sermons | filterBy searchWord">
 	    <div class="content">
 	      <div class="header">{{ sermon.title }}</div>
 	      <div class="meta">
-	        <span class="category"><i class="icon-user"></i>{{ sermon.datepreached }}</span>
-	        <span class="category"><i class="icon-user"></i>{{ sermon.preacher }}</span>
+	        <span class="category"><i class="icon-user"></i>Date: {{ sermon.datepreached }}</span>
+	        <br>
+	        <span class="category"><i class="icon-user"></i>Preacher: {{ sermon.preacher }}</span>
 	      </div>
 	      <br>
 	      <div class="description">
@@ -33,6 +40,7 @@
 
 		data: function() {
 			return {
+				searchWord: "", 		/*used by the search bar*/
 				sermons: [], 			/*using the getAllSermons()*/
 				pagination: {},
 			};
