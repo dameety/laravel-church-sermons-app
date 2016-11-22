@@ -6,6 +6,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="keywords" content="make your church messages available for downlaod for all"/>
         
+
         <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/sweetalert2.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap-datepicker3.min.css') }}" type="text/css">
@@ -158,8 +159,8 @@
         <script src="{{ URL::asset('js/bootstrap-datepicker.min.js') }}"></script>
         
         <script src="{{ URL::asset('js/imp/app.js') }}"></script>
-        <script srcc="{{ URL::asset('js/validator.js') }}"></script>
-        <script srcc="{{ URL::asset('node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+        <script src="{{ URL::asset('js/validator.js') }}"></script>
+        <script src="{{ URL::asset('node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 
     </body>
 </html>
