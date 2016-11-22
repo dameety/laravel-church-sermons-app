@@ -14002,13 +14002,6 @@ exports.default = {
         editSermon: function editSermon(slug) {
             this.$http.get('/api/sermon/edit/' + slug).then(function (response) {
                 this.$set('updateSermon', response.body);
-                /*this.updateSermon.title = response.body.title
-                this.updateSermon.preacher = response.body.preacher
-                this.updateSermon.service_id = response.body.service_id
-                this.updateSermon.category_id = response.body.category_id
-                this.updateSermon.datepreached = response.body.datepreached
-                this.updateSermon.status = response.body.status
-                this.updateSermon.slug = response.body.slug*/
             });
         },
 
@@ -14350,6 +14343,61 @@ if (module.hot) {(function () {  module.hot.accept()
 },{"vue":5,"vue-hot-reload-api":3}],13:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+
+  data: function data() {
+    return {
+      sermons: [], /*using the getAllSermons()*/
+      pagination: {}
+    };
+  }, /*data ends here*/
+
+  created: function created() {
+    this.getAllSermons();
+  },
+
+  methods: {
+    getAllSermons: function getAllSermons(page_url) {
+      var vm = this;
+      page_url = page_url || '/users/sermons/paginated';
+      this.$http.get(page_url).then(function (response) {
+        vm.makePagination(response.data);
+        vm.$set('sermons', response.data.data);
+      });
+    },
+
+    makePagination: function makePagination(data) {
+      var pagination = {
+        current_page: data.current_page,
+        last_page: data.last_page,
+        next_page_url: data.next_page_url,
+        prev_page_url: data.prev_page_url,
+        total: data.total
+      };
+      this.$set('pagination', pagination);
+    }
+
+  } /*methods end here*/
+
+}; /*compoent ends here */
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"ui four stackable cards\">\n \t<div class=\"ui orange raised card\" v-for=\"sermon in sermons\">\n\t    <div class=\"content\">\n\t      <div class=\"header\">{{ sermon.title }}</div>\n\t      <div class=\"meta\">\n\t        <span class=\"category\"><i class=\"icon-user\"></i>{{ sermon.datepreached }}</span>\n\t        <span class=\"category\"><i class=\"icon-user\"></i>{{ sermon.preacher }}</span>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>Category of message</p>\n\t      </div>\n\t      <br>\n\t      <div class=\"description\">\n\t        <p>this is boatload of content waiting to be use. a paragraph ni jare</p>\n\t      </div>\n\t    </div>\n\t    <div id=\"actionButtons\" class=\"extra content actionButtons\">\n\t      <button class=\"fluid large ui orange button\">\n\t      <i class=\"fa fa-download\" aria-hidden=\"true\"></i>\n\t          Download\n\t      </button>\n\t    </div>\n  \t</div>\n </div>\n\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-5c9e5aa4", module.exports)
+  } else {
+    hotAPI.update("_v-5c9e5aa4", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":5,"vue-hot-reload-api":3}],14:[function(require,module,exports){
+'use strict';
+
 var _allsermons = require('./components/allsermons.vue');
 
 var _allsermons2 = _interopRequireDefault(_allsermons);
@@ -14378,6 +14426,10 @@ var _alladmins = require('./components/alladmins.vue');
 
 var _alladmins2 = _interopRequireDefault(_alladmins);
 
+var _sermoncards = require('./components/sermoncards.vue');
+
+var _sermoncards2 = _interopRequireDefault(_sermoncards);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Vue = require('vue');
@@ -14385,8 +14437,6 @@ Vue.use(require('vue-resource'));
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = ChurchSermons.csrfToken;
 
-
-/*import { default as swal } from 'sweetalert2';*/
 
 new Vue({
 	el: '#vue-app',
@@ -14399,12 +14449,13 @@ new Vue({
 		Newsermon: _newsermon2.default,
 		Allpreachers: _allpreachers2.default,
 		Allservices: _allservices2.default,
-		Alladmins: _alladmins2.default
+		Alladmins: _alladmins2.default,
+		Sermoncards: _sermoncards2.default
 
 	}
 
 });
 
-},{"./components/alladmins.vue":6,"./components/allcategories.vue":7,"./components/allpreachers.vue":8,"./components/allsermons.vue":9,"./components/allservices.vue":10,"./components/allusers.vue":11,"./components/newsermon.vue":12,"vue":5,"vue-resource":4}]},{},[13]);
+},{"./components/alladmins.vue":6,"./components/allcategories.vue":7,"./components/allpreachers.vue":8,"./components/allsermons.vue":9,"./components/allservices.vue":10,"./components/allusers.vue":11,"./components/newsermon.vue":12,"./components/sermoncards.vue":13,"vue":5,"vue-resource":4}]},{},[14]);
 
 //# sourceMappingURL=main.js.map

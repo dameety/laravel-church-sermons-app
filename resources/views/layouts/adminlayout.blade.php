@@ -157,7 +157,6 @@
         <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
         <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('js/bootstrap-datepicker.min.js') }}"></script>
-        
         <script src="{{ URL::asset('js/imp/app.js') }}"></script>
         <script src="{{ URL::asset('js/validator.js') }}"></script>
         <script src="{{ URL::asset('node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>

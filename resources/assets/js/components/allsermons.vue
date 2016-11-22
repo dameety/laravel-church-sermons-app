@@ -319,14 +319,7 @@
             	this.$http.get('/api/sermon/edit/' + slug)
             		.then(function (response) {
             			this.$set('updateSermon', response.body);
-            			/*this.updateSermon.title = response.body.title
-            			this.updateSermon.preacher = response.body.preacher
-            			this.updateSermon.service_id = response.body.service_id
-            			this.updateSermon.category_id = response.body.category_id
-            			this.updateSermon.datepreached = response.body.datepreached
-            			this.updateSermon.status = response.body.status
-            			this.updateSermon.slug = response.body.slug*/
-            		});           	
+               		});           	
             },
 
             saveUpdateSermon: function (slug) {

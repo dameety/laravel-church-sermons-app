@@ -5,6 +5,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::group(['namespace' => 'API'], function () {
+    Route::get('users/sermons/paginated', 'SermonsApiController@allSermonsPaginated');
+
+});
+
+
 /*collect all sermons*/
 Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => 'admin'], function () {
 

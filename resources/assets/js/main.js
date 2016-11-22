@@ -12,8 +12,6 @@ import Allservices from './components/allservices.vue';
 import Alladmins from './components/alladmins.vue';
 import Sermoncards from './components/sermoncards.vue';
 
-/*import { default as swal } from 'sweetalert2';*/
-
 
 
 new Vue ({
@@ -31,6 +29,5 @@ new Vue ({
 		Sermoncards,
 
 	},
-
 
 });
