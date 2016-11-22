@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/semantic.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/user/style.css') }}" type="text/css">
+        <link  rel="stylesheet" href="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+
     </head> 
     <body>
     <div class="navigation-bar">
@@ -95,29 +97,29 @@
 </div> --}}
 <div class="container">
     <div class="ui raised card">
-  <div class="content">
-    <div class="header">Cute Dog Another Dog, Big dog, cray dog, nomad dog</div>
-    <div class="meta">
-      <span class="category">Animals</span>
+      <div class="content">
+        <div class="header">Title of the message</div>
+        <div class="meta">
+          <span class="category"><i class="icon-user"></i>Name of Preacher</span>
+        </div>
+        <br>
+        <div class="description">
+          <p>Category of message</p>
+        </div>
+        <br>
+        <div class="description">
+          <p>this is boatload of content waiting to be use. a paragraph ni jare</p>
+        </div>
+      </div>
+      <div id="actionButtons" class="extra content actionButtons">
+        <button class="fluid large ui orange button">
+        <i class="fa fa-download" aria-hidden="true"></i>
+            Download
+        </button>
+      </div>
     </div>
-    <br>
-    <br>
-    <div class="description">
-      <p>this is boatload of content waiting to be use. a paragraph ni jare</p>
-    </div>
-    <div class="description">
-      <p>this is boatload of content waiting to be use. a paragraph ni jare</p>
-    </div>
-  </div>
-  <div class="extra content">
-    <div class="right floated author">
-      <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
-    </div>
-    <div class="left floated author">
-      <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
-    </div>
-  </div>
-</div>
+
+
 </div> 
 
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>

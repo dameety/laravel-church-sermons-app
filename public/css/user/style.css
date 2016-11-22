@@ -6,7 +6,10 @@
 
 .actionButtons {
 	background-color: silver;
-	padding: 15px;
+}
+
+#actionButtons {
+	background-color: #E4E4E4;
 }
 
 
