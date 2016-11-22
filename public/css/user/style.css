@@ -4,3 +4,12 @@
 	padding-bottom: 20px;
 }
 
+.actionButtons {
+	background-color: silver;
+	padding: 15px;
+}
+
+
+#caption {
+	padding: 0px;
+}
