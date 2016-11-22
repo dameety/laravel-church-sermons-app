@@ -10,6 +10,7 @@ import Newsermon from './components/newsermon.vue';
 import Allpreachers from './components/allpreachers.vue';
 import Allservices from './components/allservices.vue';
 import Alladmins from './components/alladmins.vue';
+import Sermoncards from './components/sermoncards.vue';
 
 /*import { default as swal } from 'sweetalert2';*/
 
@@ -27,6 +28,7 @@ new Vue ({
 		Allpreachers,
 		Allservices,
 		Alladmins,
+		Sermoncards,
 
 	},
 
