@@ -31,12 +31,6 @@
             </div>
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav"></ul>
-                {{-- <form role="search" class="navbar-form navbar-left">
-                    <div class="form-group large">
-                        <input type="text" placeholder="Search" class="form-control">
-                    </div>
-                </form> --}}
-
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/user/profile') }}"> <button type="button" class="btn btn-primary">Profile</button></a></li>
                     <li><a href="{{ url('/logout') }}"> <button type="button" class="btn btn-danger">Logout</button></a></li>
