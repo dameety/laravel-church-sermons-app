@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div id="topSearch" class="ui fluid huge icon input">
-		<input type="text" placeholder="Start Your Search Here">
+		<input type="text" v-model="searchWord" placeholder="Start Your Search Here">
 	</div>
 </div>
 
@@ -32,6 +32,30 @@
 	    </div>
   	</div>
  </div>
+ <br>
+ <br>
+ <br>
+<!-- pagination -->
+ <div class="conatiner">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<div class="ui right float segment">
+			<div class="ui raised segment">
+				<button class="btn btn-primary btn-lg" @click="getAllSermons(pagination.prev_page_url)"
+						:disabled="!pagination.prev_page_url">
+			        Previous
+			    </button> &nbsp; 
+			    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; 
+			    <button class="btn btn-primary btn-lg" @click="getAllSermons(pagination.next_page_url)"
+			            :disabled="!pagination.next_page_url">Next
+			    </button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
+</div>
 
 </template>
 
@@ -41,10 +65,11 @@
 		data: function() {
 			return {
 				searchWord: "", 		/*used by the search bar*/
+				pagination: {},
 				sermons: [], 			/*using the getAllSermons()*/
 				pagination: {},
 			};
-		}, /*data ends here*/
+		},
 
 
 
