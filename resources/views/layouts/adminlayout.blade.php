@@ -87,17 +87,17 @@
                         <img src="{{ URL::asset('/img/logo.jpg') }}"/>
                             
                     </div>
-                    <form action="#" method="get" class="sidebar-form">
+                    {{-- <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search..."/>
                             <span class="input-group-btn">
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <ul class="sidebar-menu">
-                        <li  class="{{ Ekko::isActiveRoute('dashboard_path') }}">
+                        <li  class="{{ Ekko::isAcxtiveRoute('dashboard_path') }}">
                             <a href="{{ route('dashboard_path') }}">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>

@@ -132,7 +132,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 
-/*User routes for making requests*/
+/*User routes for making requests*/ 
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile/details/{slug}', 'HomeController@show')->name('profiledetails_path');
