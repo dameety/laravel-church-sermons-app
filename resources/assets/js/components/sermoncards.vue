@@ -56,6 +56,13 @@
 	<div class="col-md-4">
 	</div>
 </div>
+<br>
+<br>
+
+<!-- request sermon -->
+<div class="row">
+	<p> Can't find what you want? <a href="#">Request a Sermon</a></p>
+</div>
 
 </template>
 

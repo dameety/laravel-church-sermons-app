@@ -104,8 +104,6 @@ git clone https://github.com/dameety/laravel-church-sermons-app.git
 
 cd laravel-church-sermons-app
 
-add .env file
-
 composer install
 
 npm install
