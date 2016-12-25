@@ -8,7 +8,6 @@
 <div class="container">
 
   <sermoncards> </sermoncards>
-  
 
 </div> 
 

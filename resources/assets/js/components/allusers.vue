@@ -1,63 +1,63 @@
 <template>
 
-<!-- the details modal -->
-<div class="modal fade oneDetailsModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header modalHeading">
-            <button type="button" class="close modalHeading" data-dismiss="modal" aria-hidden="true">×</button>
-            <h2 class="modal-title">User Details</h2>
-        </div>        
-        <div class="modal-body">
-            <div class="row modalRowTop">
-                <div class="col-md-3">
-                    <strong class="pull-right">Name:</strong>
+    <!-- the details modal -->
+    <div class="modal fade oneDetailsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modalHeading">
+                <button type="button" class="close modalHeading" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">User Details</h2>
+            </div>        
+            <div class="modal-body">
+                <div class="row modalRowTop">
+                    <div class="col-md-3">
+                        <strong class="pull-right">Name:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ oneUser.name }}
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ oneUser.name }}
+                <div class="row modalRowColored">
+                    <div class="col-md-3">
+                        <strong class="pull-right">Username:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ oneUser.username }}
+                    </div>
                 </div>
+                <div class="row modalRowUncolored">
+                    <div class="col-md-3">
+                        <strong class="pull-right">Email:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ oneUser.email }}
+                    </div>
+                </div>
+                <div class="row modalRowUncolored">
+                    <div class="col-md-3">
+                        <strong class="pull-right">Date Joined:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ oneUser.created_at }}
+                    </div>
+                </div>
+                <div class="row modalRowColored">
+                    <div class="col-md-3">
+                        <strong class="pull-right">Status:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        {{ oneUser.status }}
+                    </div>
+                </div>
+            </div> 
+            <div class="modal-footer modalHeading">
+                <button class="btn btn-default" type="button"  data-toggle="modal" data-target=".editModal" @click.prevent="">Edit</button>
+                <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>            
             </div>
-            <div class="row modalRowColored">
-                <div class="col-md-3">
-                    <strong class="pull-right">Username:</strong>
-                </div>
-                <div class="col-md-9">
-                    {{ oneUser.username }}
-                </div>
-            </div>
-            <div class="row modalRowUncolored">
-                <div class="col-md-3">
-                    <strong class="pull-right">Email:</strong>
-                </div>
-                <div class="col-md-9">
-                    {{ oneUser.email }}
-                </div>
-            </div>
-            <div class="row modalRowUncolored">
-                <div class="col-md-3">
-                    <strong class="pull-right">Date Joined:</strong>
-                </div>
-                <div class="col-md-9">
-                    {{ oneUser.created_at }}
-                </div>
-            </div>
-            <div class="row modalRowColored">
-                <div class="col-md-3">
-                    <strong class="pull-right">Status:</strong>
-                </div>
-                <div class="col-md-9">
-                    {{ oneUser.status }}
-                </div>
-            </div>
-        </div> 
-        <div class="modal-footer modalHeading">
-            <button class="btn btn-default" type="button"  data-toggle="modal" data-target=".editModal" @click.prevent="">Edit</button>
-            <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>            
         </div>
+      </div>
     </div>
-  </div>
-</div>
-<!--  the details modal  -->
+    <!--  the details modal  -->
 
 
     <div class="panel">

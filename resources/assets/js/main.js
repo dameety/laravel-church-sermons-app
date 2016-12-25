@@ -11,7 +11,7 @@ import Allpreachers from './components/allpreachers.vue';
 import Allservices from './components/allservices.vue';
 import Alladmins from './components/alladmins.vue';
 import Sermoncards from './components/sermoncards.vue';
-
+import Usernav from './components/usernav.vue';
 
 
 new Vue ({
@@ -27,7 +27,8 @@ new Vue ({
 		Allservices,
 		Alladmins,
 		Sermoncards,
-
+		Usernav,
+		
 	},
 
 });

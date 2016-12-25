@@ -67,7 +67,7 @@
 			</div>
 		</div> 
         <div class="modal-footer modalHeading">
-            <button class="btn btn-default" type="button"  data-toggle="modal" data-target=".editModal" @click.prevent="editSermon(oneSermon.slug)">Edit</button>
+            <button class="btn btn-default" type="button" data-toggle="modal" data-target=".editModal" @click.prevent="editSermon(oneSermon.slug)">Edit</button>
             <button data-dismiss="modal" class="btn btn-danger" type="button">Close</button>            
         </div>
     </div>
