@@ -131,21 +131,19 @@
 		</div>
     </div>
   </div>
-</div>
-
-<!--  the edit modal  -->
+</div><!--  the edit modal  -->
 
 
 	<div class="panel">
 	    <header class="panel-heading">
-	      <div class="row">
-	        <div class="col-sm-3">
-	           <span class="badge badge-info count">Total : {{sermonsCount.length}} </span>
-	        </div>
-	        <div class="col-sm-3 pull-right">
+	     	<div class="row">
+	        	<div class="col-sm-3">
+	           		<span class="badge badge-info count">Total : {{sermonsCount.length}} </span>
+	        	</div>
+	        	<div class="col-sm-3 pull-right">
 	          
-	        </div>
-	      </div>
+	        	</div>
+	      	</div>
 	    </header>
 	    
 	    <br>
@@ -193,7 +191,8 @@
 		              	</div>
 		            </td>
 		        </tr>
-		    </table> <br>
+		    </table>
+		    <br>
 	    </div> <!-- from categroy filter to table ends here -->
 	    <header class="panel-heading">
 	      	<div class="row">

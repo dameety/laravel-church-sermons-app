@@ -9,32 +9,32 @@
 	<div class="ui four stackable cards">
 	 	<div class="ui orange raised card"v-for="sermon in sermons | filterBy searchWord">
 		    <div class="content">
-		      <div class="header">{{ sermon.title }}</div>
-		      <div class="meta">
-		        <span class="category"><i class="icon-user"></i>Date: {{ sermon.datepreached }}</span>
-		        <br>
-		        <span class="category"><i class="icon-user"></i>Preacher: {{ sermon.preacher }}</span>
-		      </div>
-		      <br>
-		      <div class="description">
-		        <p>this is boatload of content waiting to be use. a paragraph ni jare</p>
-		      </div>
+		    	<div class="header">{{ sermon.title }}</div>
+		      	<div class="meta">
+		        	<span class="category"><i class="icon-user"></i>Date: {{ sermon.datepreached }}</span>
+		        	<br>
+		        	<span class="category"><i class="icon-user"></i>Preacher: {{ sermon.preacher }}</span>
+		      	</div>
+		      	<br>
+		      	<div class="description">
+		        	<p>this is boatload of content waiting to be use. a paragraph ni jare</p>
+		      	</div>
 		    </div>
 		    <div id="actionButtons" class="extra content actionButtons">
-		      <button class="fluid large ui orange button">
-		      <i class="fa fa-download" aria-hidden="true"></i>
-		          Download
-		      </button>
+		      	<button class="fluid large ui orange button">
+					<i class="fa fa-download" aria-hidden="true"></i>
+		          	Download
+		      	</button>
 		    </div>
 	  	</div>
-	 </div>
-	 <br>
-	 <br>
-	 <br>
+	</div>
+	
+	<br>
+	<br>
+	
 	<!-- pagination -->
  	<div class="conatiner">
-		<div class="col-md-4">
-		</div>
+		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<div class="ui right float segment">
 				<div class="ui raised segment">
@@ -49,16 +49,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
-		</div>
+		<div class="col-md-4"></div>
 	</div>
-	<br>
-	<br>
-
-	<!-- request sermon -->
-	<div class="row">
-		<p> Can't find what you want? <a href="#">Request a Sermon</a></p>
-	</div>    
 
 </template>
 
