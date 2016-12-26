@@ -17,10 +17,6 @@
 		      </div>
 		      <br>
 		      <div class="description">
-		        <p>Category of message</p>
-		      </div>
-		      <br>
-		      <div class="description">
 		        <p>this is boatload of content waiting to be use. a paragraph ni jare</p>
 		      </div>
 		    </div>
@@ -58,26 +54,6 @@
 	</div>
 	<br>
 	<br>
-	<div class="conatiner">
-		<div class="col-md-4">
-		</div>
-		<div class="col-md-4">
-			<div class="ui right float segment">
-				<div class="ui raised segment">
-					<button class="btn btn-primary btn-lg" @click="getAllSermons(pagination.prev_page_url)"
-							:disabled="!pagination.prev_page_url">
-				        Previous
-				    </button> &nbsp; 
-				    <span>Page {{pagination.current_page}} of {{pagination.last_page}}</span> &nbsp; 
-				    <button class="btn btn-primary btn-lg" @click="getAllSermons(pagination.next_page_url)"
-				            :disabled="!pagination.next_page_url">Next
-				    </button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
 
 	<!-- request sermon -->
 	<div class="row">
