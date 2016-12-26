@@ -8,6 +8,7 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'API'], function () {
     Route::get('users/sermons/paginated', 'SermonsApiController@allSermonsPaginated');
+    Route::post('sermon/request/new', 'SermonrequestsApiController@saveRequest');
 
 });
 

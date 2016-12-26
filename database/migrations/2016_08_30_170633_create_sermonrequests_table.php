@@ -15,16 +15,9 @@ class CreateSermonrequestsTable extends Migration
         Schema::create('sermonrequests', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
-            $table->string('email');
-            $table->string('subject');
-            $table->text('request');
-            $table->string('title');
+            $table->string('sermontitle');
             $table->string('preacher');
-            $table->string('service');
-            $table->string('datepreached');
-            $table->string('month');
-            $table->string('year');
+            $table->string('moreinfo');
             $table->string('slug')->unique();
             $table->softdeletes();
 

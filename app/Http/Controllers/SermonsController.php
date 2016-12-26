@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Sermon;
 use App\Category;
-/*use App\Preacher;*/
 use App\Service;
 use Carbon\Carbon;
 use Storage;
@@ -44,7 +43,6 @@ class SermonsController extends Controller
     public function create()
     {
         $categories = Category::all();
-/*        $preachers = Preacher::all();*/
         $service = Service::all();
         return view('sermons.newSermon', compact('categories', 'service'));
     }

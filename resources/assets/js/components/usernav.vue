@@ -4,21 +4,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">     
                 <div class="modal-body">
-                    <form method="post" @submit.prevent="sendRequest()">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <br>
+                    <form method="POST" @submit.prevent="sendSermonRequest">
                         <div class="form-group">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <br>
-                              <label>Sermon Title: </label>                        
-                              <input type="text" maxlength="75" required="required" name="sermontitle" class="form-control input-sm" v-model="updateCategory.name">
-                              <span v-if="formErrors['name']" class="inputError">{{ formErrors['name'] }}</span>                        
+                            <label>Sermon Title:</label> 
+                            <input type="text" v-model="sermonRequest.sermontitle" required="required" name="sermontitle" class="form-control" placeholder="e.g Grace, Success, Forgiveness, etc">
+                            <span v-if="formErrors['sermontitle']" class="inputError">{{ formErrors['sermontitle'] }}</span>                  
                         </div>
+                        <br>
                         <div class="form-group">
-                              <label>More Info: </label> (optional)                        
-                              <textarea type="text"  maxlength="300" required="required" name="info" class="form-control input-lg" rows="4" v-model="updateCategory.info"></textarea>
-                              <span v-if="formErrors['info']" class="inputError">{{ formErrors['info'] }}</span>
+                            <label>Preacher:</label> 
+                            <input type="text" v-model="sermonRequest.preacher" name="preacher" class="form-control">
+                            <span v-if="formErrors['preacher']" class="inputError">{{ formErrors['preacher'] }}</span>                  
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <label>More Info:</label> (optional)                        
+                            <textarea type="text" v-model="sermonRequest.moreinfo" name="moreinfo" class="form-control" rows="5"> </textarea>
+                            <span v-if="formErrors['moreinfo']" class="inputError">{{ formErrors['moreinfo'] }}</span>
+                        </div>
+                        <br>
                         <div class="form-group">                    
-                            <button type="submit" class="btn btn-info btn-block btn-lg">Send Request</button>
+                            <button type="submit" class="btn btn-success btn-block">Send Request</button>
                         </div>
                     </form>                                  
                 </div>
@@ -38,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ route('userhome_path') }}" class="navbar-brand">ChurchSermons</a>
+                    <a href="#" class="navbar-brand">ChurchSermons</a>
                 </div>
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav"></ul>
@@ -62,26 +70,39 @@
 	export default {
 		
 		data: function() {
-			return {
+			
+            return {
 				searchWord: "",
                 formErrors: {},
-
+                sermonRequest: {
+                    sermontitle: "",
+                    preacher: "",
+                    moreinfo: ""
+                },
 			};
+
 		},
 
-
 		created: function() {
-			this.test();
+			
 		},
 
 		methods: {
-            test: function () {
-                // console.log("hello from nav");
+
+            sendSermonRequest: function () {
+                var sermonRequestData = this.sermonRequest;
+                this.newCategory = { sermontitle: "", preacher: "", moreinfo: ""}
+                this.$http.post('/sermon/request/new', sermonRequestData)
+                .then((response) => {
+                    // this.fetchCategories()
+                    // this.getCategoriesCount()
+                }, (response) => {
+                    var errors = response.body;
+                    this.formErrors = errors;
+                });
             },
 
-            sermonRequest: function () {
-                // console.log("hello from nav");
-            }
+
         }
     };
     

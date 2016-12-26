@@ -219,7 +219,6 @@
                 });
           },
 
-
           deleteCategory: function(category) {
               var vm = this;
               swal({

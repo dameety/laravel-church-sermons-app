@@ -54,7 +54,6 @@ class CategoriesApiController extends Controller
                 $category-> save();
             }
             return response(201);
-
     }
 
     public function categoryEditSave(Request $request, $slug)

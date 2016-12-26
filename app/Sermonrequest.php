@@ -10,17 +10,16 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 class Sermonrequest extends Model
 {
     use Sluggable;
-    
 
     protected $fillable = [
-    	'name', 'email', 'subject', 'request', 'title', 'preacher', 'service', 'datepreached', 'month', 'year',
+    	'sermontitle', 'preacher', 'moreinfo',
     ];
 
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'email'
+                'source' => 'sermontitle'
             ]
         ];
     }

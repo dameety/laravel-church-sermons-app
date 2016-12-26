@@ -14622,7 +14622,7 @@ if (module.hot) {(function () {  module.hot.accept()
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 
@@ -14630,28 +14630,37 @@ var swal = require('sweetalert2');
 
 exports.default = {
 
-	data: function data() {
-		return {
-			searchWord: ""
-		};
-	},
+    data: function data() {
 
-	created: function created() {
-		this.test();
-	},
+        return {
+            searchWord: "",
+            formErrors: {},
+            sermonRequest: {
+                sermontitle: "",
+                moreinfo: ""
+            }
+        };
+    },
 
-	methods: {
-		test: function test() {
-			// console.log("hello from nav");
-		},
+    created: function created() {},
 
-		sermonRequest: function sermonRequest() {
-			// console.log("hello from nav");
-		}
-	}
+    methods: {
+
+        sendSermonRequest: function sendSermonRequest() {
+            var _this = this;
+
+            var sermonRequestData = this.sermonRequest;
+            this.newCategory = { sermontitle: "", moreinfo: "" };
+            this.$http.post('/api/sermon/request/new', sermonRequestData).then(function (response) {}, function (response) {
+                var errors = response.body;
+                _this.formErrors = errors;
+            });
+        }
+
+    }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"modal fade editModal\" tabindex=\"-1\" role=\"dialog\">\n    <div class=\"modal-dialog\" role=\"document\">\n        <div class=\"modal-content\">     \n            <div class=\"modal-body\">\n                <form method=\"post\" @submit.prevent=\"saveUpdateCategory(updateCategory.slug)\">\n                    <div class=\"form-group\">\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n                        <br>\n                          <label>Sermon Title: </label>                        \n                          <input type=\"text\" maxlength=\"75\" required=\"required\" name=\"name\" class=\"form-control input-sm\" v-model=\"updateCategory.name\">\n                          <span v-if=\"formErrors['name']\" class=\"inputError\">{{ formErrors['name'] }}</span>                        \n                    </div>\n                    <div class=\"form-group\">\n                          <label>More Info: </label> (optional)                        \n                          <textarea type=\"text\" maxlength=\"300\" required=\"required\" name=\"info\" class=\"form-control input-lg\" rows=\"4\" v-model=\"updateCategory.info\"></textarea>\n                          <span v-if=\"formErrors['info']\" class=\"inputError\">{{ formErrors['info'] }}</span>\n                    </div>\n                    <div class=\"form-group\">                    \n                        <button type=\"submit\" class=\"btn btn-info btn-block btn-lg\">Send Request</button>\n                    </div>\n                </form>                                  \n            </div>\n        </div>\n    </div>\n</div>\n\n<!-- navigation starts here -->\n<div class=\"navigation-bar\">\n    <nav role=\"navigation\" class=\"navbar navbar-default\">\n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"container\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" data-target=\"#navbarCollapse\" data-toggle=\"collapse\" class=\"navbar-toggle\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a href=\"{{ route('userhome_path') }}\" class=\"navbar-brand\">ChurchSermons</a>\n            </div>\n            <div id=\"navbarCollapse\" class=\"collapse navbar-collapse\">\n                <ul class=\"nav navbar-nav\"></ul>\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <li><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"sermonRequest()\">Request A Sermon</button></li>\n                    <li><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"userProfile()\">Profile</button></li>\n                    <li><button class=\"btn btn-danger\" @click.prevent=\"logout()\">Logout</button></li>\n                    <!-- <li><a href=\"{{ url('/logout') }}\"> <button type=\"button\" class=\"btn btn-danger\">Logout</button></a></li> -->\n                </ul>   \n            </div>\n        </div>\n    </nav>\n</div>\n<!-- navigation ends here -->\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"modal fade editModal\" tabindex=\"-1\" role=\"dialog\">    <!-- request modal starts here -->\n    <div class=\"modal-dialog\" role=\"document\">\n        <div class=\"modal-content\">     \n            <div class=\"modal-body\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\n                <br>\n                <form method=\"POST\" @submit.prevent=\"sendSermonRequest\">\n                    <div class=\"form-group\">\n                        <label>Sermon Title:</label> \n                        <input type=\"text\" v-model=\"sermonRequest.sermontitle\" required=\"required\" name=\"sermontitle\" class=\"form-control\" placeholder=\"e.g Grace, Success, Forgiveness, etc\">\n                        <span v-if=\"formErrors['sermontitle']\" class=\"inputError\">{{ formErrors['sermontitle'] }}</span>                        \n                    </div>\n                    <br>\n                    <div class=\"form-group\">\n                        <label>More Info:</label> (optional)                        \n                        <textarea type=\"text\" v-model=\"sermonRequest.moreinfo\" name=\"moreinfo\" class=\"form-control\" rows=\"5\"> </textarea>\n                        <span v-if=\"formErrors['moreinfo']\" class=\"inputError\">{{ formErrors['moreinfo'] }}</span>\n                    </div>\n                    <br>\n                    <div class=\"form-group\">                    \n                        <button type=\"submit\" class=\"btn btn-success btn-block\">Send Request</button>\n                    </div>\n                </form>                                  \n            </div>\n        </div>\n    </div>\n</div>  <!-- request modal ends here -->\n\n<!-- navigation starts here -->\n<div class=\"navigation-bar\">\n    <nav role=\"navigation\" class=\"navbar navbar-default\">\n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"container\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" data-target=\"#navbarCollapse\" data-toggle=\"collapse\" class=\"navbar-toggle\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a href=\"#\" class=\"navbar-brand\">ChurchSermons</a>\n            </div>\n            <div id=\"navbarCollapse\" class=\"collapse navbar-collapse\">\n                <ul class=\"nav navbar-nav\"></ul>\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <li><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"sermonRequest()\">Request A Sermon</button></li>\n                    <li><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".editModal\" @click.prevent=\"userProfile()\">Profile</button></li>\n                    <li><button class=\"btn btn-danger\" @click.prevent=\"logout()\">Logout</button></li>\n                    <!-- <li><a href=\"{{ url('/logout') }}\"> <button type=\"button\" class=\"btn btn-danger\">Logout</button></a></li> -->\n                </ul>   \n            </div>\n        </div>\n    </nav>\n</div>\n<!-- navigation ends here -->\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

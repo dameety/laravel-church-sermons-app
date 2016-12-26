@@ -75,7 +75,7 @@
 		methods: {
 			getAllSermons: function (page_url) {
                 let vm = this;
-                page_url = page_url || '/users/sermons/paginated'
+                page_url = page_url || '/api/users/sermons/paginated'
                 this.$http.get(page_url)
                     .then(function (response) {
                         vm.makePagination(response.data)
