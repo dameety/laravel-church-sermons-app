@@ -98,10 +98,13 @@
                     console.log(response);
                     var vm = this;
                     swal({
-                        title: 'Request Sent',
+                        title: 'Sermon Request Sent',
                         text: 'You will get a reply soon from our admin. Thanks.',
                         type: 'success',
-                    }).then(function(){}).done();
+                    }).then(function(){
+                        // perform any action you want here.
+                        // happens when the ok button is clicked
+                    }).done();
                 }, (response) => {
                     var errors = response.body;
                     this.formErrors = errors;

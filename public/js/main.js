@@ -14659,10 +14659,13 @@ exports.default = {
                 console.log(response);
                 var vm = _this;
                 swal({
-                    title: 'Request Sent',
+                    title: 'Sermon Request Sent',
                     text: 'You will get a reply soon from our admin. Thanks.',
                     type: 'success'
-                }).then(function () {}).done();
+                }).then(function () {
+                    // perform any action you want here.
+                    // happens when the ok button is clicked
+                }).done();
             }, function (response) {
                 var errors = response.body;
                 _this.formErrors = errors;
