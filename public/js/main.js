@@ -14657,7 +14657,12 @@ exports.default = {
             this.sermonRequest = { sermontitle: "", preacher: "", moreinfo: "" };
             this.$http.post('/sermon/request/new', sermonRequestTemp).then(function (response) {
                 console.log(response);
-                swal('Good job!', 'You clicked the button!', 'success');
+                var vm = _this;
+                swal({
+                    title: 'Request Sent',
+                    text: 'You will get a reply soon from our admin. Thanks.',
+                    type: 'success'
+                }).then(function () {}).done();
             }, function (response) {
                 var errors = response.body;
                 _this.formErrors = errors;

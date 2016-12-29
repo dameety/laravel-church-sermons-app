@@ -8,6 +8,7 @@
         <title>Church Sermons - Home</title>
 
         <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ URL::asset('/css/sweetalert2.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('/css/semantic.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/user/style.css') }}" type="text/css">
         <link  rel="stylesheet" href="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
@@ -30,5 +31,6 @@
         <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
         <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('js/semantic.min.js') }}"></script>
+        <script src="{{ URL::asset('js/validator.js') }}"></script>
     </body>
 </html>                                   

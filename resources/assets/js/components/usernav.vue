@@ -96,11 +96,12 @@
                 this.$http.post('/sermon/request/new', sermonRequestTemp)
                 .then((response) => {
                     console.log(response);
-                    swal(
-                      'Good job!',
-                      'You clicked the button!',
-                      'success'
-                    )
+                    var vm = this;
+                    swal({
+                        title: 'Request Sent',
+                        text: 'You will get a reply soon from our admin. Thanks.',
+                        type: 'success',
+                    }).then(function(){}).done();
                 }, (response) => {
                     var errors = response.body;
                     this.formErrors = errors;
