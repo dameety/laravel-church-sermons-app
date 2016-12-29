@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Sermon;
 use App\Category;
 use App\Service;
+use App\Sermonrequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -23,7 +24,7 @@ use Redirect;
 class SermonsApiController extends Controller
 {
     
-    public function allSermonsPaginated()
+    public function allSermonsPaginated ()
     {
         return Sermon::latest('created_at')->paginate(20);
     }

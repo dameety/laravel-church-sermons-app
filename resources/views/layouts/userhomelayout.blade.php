@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Church Sermons - Home</title>
 
         <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/semantic.min.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ URL::asset('/css/user/style.css') }}" type="text/css">
         <link  rel="stylesheet" href="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+
         <script>
             window.ChurchSermons = {
                 csrfToken: '{{ csrf_token() }}'
             };
         </script>
+
     </head> 
     <body id="vue-app">
-
-        {{-- navigation using vue component --}}
         <usernav></usernav>
         
         <div class="conatiner">    

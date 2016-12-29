@@ -6,17 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Sermonrequest;
+use Response;
+use Validator;
+use Redirect;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
+
 
 
 class SermonrequestsApiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function saveRequest(Request $request)
+    
+    public function saveSermonRequest(Request $request)
     {
         $rules = array(
             'sermontitle' => 'required',
@@ -31,12 +34,12 @@ class SermonrequestsApiController extends Controller
         else
             {
                 $sermonrequest = new Sermonrequest;
-                $sermonrequest -> sermontitle = Input::get('sermontitle');
-                $sermonrequest -> preacher = Input::get('preacher');
-                $sermonrequest -> moreinfo = Input::get('moreinfo');
+                $sermonrequest -> sermontitle = $request-> sermontitle;
+                $sermonrequest -> preacher = $request-> preacher;
+                $sermonrequest -> moreinfo = $request-> moreinfo;
                 $sermonrequest-> save();
+                return response(200);
             }
-            return response(201);
     }
 
     public function index()

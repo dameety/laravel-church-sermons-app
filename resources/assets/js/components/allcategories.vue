@@ -1,34 +1,34 @@
 <template>
 
-<!-- the edit modal -->
-<div class="modal fade editModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      
-        <div class="modal-body">
-          <form method="post" @submit.prevent="saveUpdateCategory(updateCategory.slug)">
-              <div class="form-group">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <br>
-                  <label>Name: </label>                        
-                  <input type="text" maxlength="75" required="required" name="name" class="form-control input-sm" v-model="updateCategory.name">
-                  <span v-if="formErrors['name']" class="inputError">{{ formErrors['name'] }}</span>                        
-              </div>
-              <div class="form-group">
-                  <label>Description: </label> (optional)                        
-                  <textarea type="text"  maxlength="300" required="required" name="info" class="form-control input-lg" rows="4" v-model="updateCategory.info"></textarea>
-                  <span v-if="formErrors['info']" class="inputError">{{ formErrors['info'] }}</span>
-              </div>
-              <div class="form-group">                    
-                <button type="submit" class="btn btn-info btn-block btn-lg">Save Changes</button>
-              </div>
-          </form>             
-        </div> 
+  <!-- the edit modal -->
+  <div class="modal fade editModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
         
+          <div class="modal-body">
+            <form method="post" @submit.prevent="saveUpdateCategory(updateCategory.slug)">
+                <div class="form-group">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <br>
+                    <label>Name: </label>                        
+                    <input type="text" maxlength="75" required="required" name="name" class="form-control input-sm" v-model="updateCategory.name">
+                    <span v-if="formErrors['name']" class="inputError">{{ formErrors['name'] }}</span>                        
+                </div>
+                <div class="form-group">
+                    <label>Description: </label> (optional)                        
+                    <textarea type="text"  maxlength="300" required="required" name="info" class="form-control input-lg" rows="4" v-model="updateCategory.info"></textarea>
+                    <span v-if="formErrors['info']" class="inputError">{{ formErrors['info'] }}</span>
+                </div>
+                <div class="form-group">                    
+                  <button type="submit" class="btn btn-info btn-block btn-lg">Save Changes</button>
+                </div>
+            </form>             
+          </div> 
+          
+      </div>
     </div>
   </div>
-</div>
-<!--  the edit modal  -->
+  <!--  the edit modal  -->
 
 
 
@@ -232,7 +232,7 @@
                         this.getCategoriesCount()
                         this.categories.$remove(category)
                       });
-                  }).done();     
+                  }).done();
           },
 
     			

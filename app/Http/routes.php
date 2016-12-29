@@ -8,10 +8,8 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'API'], function () {
     Route::get('users/sermons/paginated', 'SermonsApiController@allSermonsPaginated');
-    Route::post('sermon/request/new', 'SermonrequestsApiController@saveRequest');
-
+    Route::post('sermon/request/new', 'SermonrequestsApiController@saveSermonRequest');
 });
-
 
 /*collect all sermons*/
 Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => 'admin'], function () {
@@ -57,7 +55,6 @@ Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => 'admin'],
 
 });
 
-
 Route::auth();
 Route::get('/home', 'HomeController@index')->name('userhome_path');
 
@@ -77,7 +74,6 @@ Route::get('admin/password/reset/{token?}','AdminAuth\PasswordController@showRes
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', 'AdminController@index')->name('dashboard_path');
     Route::get('/admin/admins', 'AdminController@allAdminsPage')->name('adminsPage_path');
-
 });
 
 /*sermon routes*/
@@ -113,7 +109,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/services', 'ServicesController@allServicesPage')->name('servicepage_path');
 });
 
-
 /*user management routes*/
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/users', 'UsersController@allUsersPage')->name('allusers_path');
@@ -131,7 +126,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/sermonrequest/details/{slug}', 'SermonrequestsController@show')->name('sermonrequestdetails_path');
 
 });
-
 
 /*User routes for making requests*/ 
 Route::group(['middleware' => 'auth'], function () {

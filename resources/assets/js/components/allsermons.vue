@@ -232,7 +232,6 @@
 				categories: [], 		/*using the getAllCategories() and select input*/
 				services: [],			/*used in the select input*/
 				categorySelected: [], 	/*using the sermons filter*/
-				/*categorySermon: []*/ 	/*coming in from the category selected filter*/
 				pagination: {},
 				sermonsCount: {},			/*used to just get the number of sermons*/
 				oneSermon: {},
