@@ -49,9 +49,9 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav"></ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><button id="spacing" class="btn btn-primary spacing" data-toggle="modal" data-target=".profileModal">Request A Sermon</button></li>
-                        <li><button id="spacing" class="btn btn-primary spacing" data-toggle="modal" data-target=".editModal" @click.prevent="userProfile()">Profile</button></li>
-                        <li><button id="spacing" class="btn btn-danger spacing" @click.prevent="logout">Logout</button></li>
+                        <li><button class="spacing btn btn-primary" data-toggle="modal" data-target=".profileModal">Request A Sermon</button></li>
+                        <li><button class="btn btn-primary spacing" data-toggle="modal" data-target=".editModal" @click.prevent="userProfile()">My Profile</button></li>
+                        <li><button class="btn btn-danger spacing" @click.prevent="logout">Logout</button></li>
                     </ul>   
                 </div>
             </div>
